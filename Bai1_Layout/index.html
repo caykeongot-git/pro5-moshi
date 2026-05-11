@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moshi Store — Premium Experience</title>
+    <meta name="description" content="Giao diện Landing Page chuẩn Apple, tối ưu hiệu năng siêu mượt">
+    <!-- Favicon Logo Táo Apple -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'><path d='M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z'/></svg>">
+    
+    <!-- Nhúng Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Nhúng FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Nhúng Font viết tay Caveat cho chữ Hello -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS của bài tập phải nằm dưới cùng để ưu tiên cao nhất (ghi đè Bootstrap nếu cần) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 🌟 Màn hình Intro (Hello Apple) 🌟 -->
+    <div id="apple-intro">
+        <div class="intro-content">
+            <i class="fa-brands fa-apple intro-apple"></i>
+            <span class="intro-hello">hello</span>
+        </div>
+    </div>
+
+    <!-- 🌟 Background Watermark Apple 🌟 -->
+    <div class="apple-bg-watermark">
+        <i class="fa-brands fa-apple"></i>
+    </div>
+
+    <!-- Custom Magnetic Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Thanh Progress Bar hiển thị % cuộn trang -->
+    <div id="scroll-progress"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="logo">Moshi<span class="logo-dot">.</span></div>
+        <nav class="main-nav" id="mainNav">
+            <a href="#home" class="nav-link active" data-section="home">Trang chủ</a>
+            <a href="#products" class="nav-link" data-section="products">Sản phẩm</a>
+            <a href="#contact" class="nav-link" data-section="contact">Liên hệ</a>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section (Landing Page) -->
+    <section id="home" class="hero">
+        <!-- Đã xóa Video Background cũ để chống giật lag. Watermark Táo đã được thêm phía trên. -->
+        <div class="hero-card reveal">
+            <h1 class="hero-title shimmer-text">Chào mừng đến với<br>không gian sáng tạo</h1>
+            <p class="hero-subtitle" id="typing-target"></p>
+            <a href="#products" class="btn-primary ripple-btn">Khám Phá Ngay</a>
+        </div>
+    </section>
+
+    <!-- Testimonial Marquee (Băng chuyền Uy tín) -->
+    <div class="testimonial-marquee-wrapper">
+        <div class="testimonial-marquee">
+            <span><i class="fa-solid fa-star" style="color: #F5A623; margin-right: 6px;"></i> 4.9/5 đánh giá từ 2000+ Coder</span>
+            <span><i class="fa-solid fa-bolt" style="color: #0071E3; margin-right: 6px;"></i> Giao hỏa tốc tại TP.HCM & Hà Nội</span>
+            <span><i class="fa-solid fa-fire-flame-curved" style="color: #FF3B30; margin-right: 6px;"></i> Hơn 2.000+ Setup góc làm việc hoàn thiện</span>
+            <span><i class="fa-solid fa-gem" style="color: #AF52DE; margin-right: 6px;"></i> Sản phẩm Premium độc quyền</span>
+            <!-- Lặp lại content để hiệu ứng chạy ngang liên tục vô tận mượt mà -->
+            <span><i class="fa-solid fa-star" style="color: #F5A623; margin-right: 6px;"></i> 4.9/5 đánh giá từ 2000+ Coder</span>
+            <span><i class="fa-solid fa-bolt" style="color: #0071E3; margin-right: 6px;"></i> Giao hỏa tốc tại TP.HCM & Hà Nội</span>
+            <span><i class="fa-solid fa-fire-flame-curved" style="color: #FF3B30; margin-right: 6px;"></i> Hơn 2.000+ Setup góc làm việc hoàn thiện</span>
+            <span><i class="fa-solid fa-gem" style="color: #AF52DE; margin-right: 6px;"></i> Sản phẩm Premium độc quyền</span>
+        </div>
+    </div>
+
+    <!-- Section Header -->
+    <div class="section-header reveal">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="section-line"></div>
+        <p>Những thiết bị được tuyển chọn kỹ càng cho không gian làm việc của bạn</p>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="products" class="container-custom">
+        <main class="products-grid">
+            <!-- Product Card 1 -->
+            <article class="product-card card reveal">
+                <div class="product-image skeleton">
+                    <img src="https://picsum.photos/400/300?random=1" alt="Bàn phím cơ Custom" class="blur-up" loading="lazy">
+                    <span class="badge badge-custom fomo-pulse">🔥 14 người đang xem</span>
+                </div>
+                <div class="product-info">
+                    <div class="rating skeleton">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="skeleton">Bàn phím cơ Custom</h3>
+                    <p class="skeleton">Trải nghiệm gõ phím tuyệt đỉnh với switch tactile và keycap PBT.</p>
+                    <div class="price-row">
+                        <span class="price skeleton">2.500.000đ</span>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn-detail skeleton ripple-btn" 
+                                data-bs-toggle="modal" data-bs-target="#productModal"
+                                data-name="Bàn phím cơ Custom"
+                                data-price="2.500.000đ"
+                                data-img="https://picsum.photos/400/300?random=1"
+                                data-desc="Trải nghiệm gõ phím tuyệt đỉnh với switch tactile và keycap PBT.">
+                                Chi tiết
+                            </button>
+                            <button class="btn-buy skeleton ripple-btn" data-name="Bàn phím cơ Custom">Mua</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Product Card 2 -->
+            <article class="product-card card reveal" style="transition-delay: 0.1s;">
+                <div class="product-image skeleton">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Chuột Gaming Siêu Nhẹ" class="blur-up" loading="lazy">
+                    <span class="badge badge-new fomo-pulse">⚡ Mới</span>
+                </div>
+                <div class="product-info">
+                    <div class="rating skeleton">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="skeleton">Chuột Gaming Siêu Nhẹ</h3>
+                    <p class="skeleton">Độ trễ thấp, cảm biến quang học chính xác từng pixel cho game thủ.</p>
+                    <div class="price-row">
+                        <span class="price skeleton">1.200.000đ</span>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn-detail skeleton ripple-btn" 
+                                data-bs-toggle="modal" data-bs-target="#productModal"
+                                data-name="Chuột Gaming Siêu Nhẹ"
+                                data-price="1.200.000đ"
+                                data-img="https://picsum.photos/400/300?random=2"
+                                data-desc="Độ trễ thấp, cảm biến quang học chính xác từng pixel cho game thủ chuyên nghiệp. Thiết kế công thái học.">
+                                Chi tiết
+                            </button>
+                            <button class="btn-buy skeleton ripple-btn" data-name="Chuột Gaming Siêu Nhẹ">Mua</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product Card 3 -->
+            <article class="product-card card reveal" style="transition-delay: 0.2s;">
+                <div class="product-image skeleton">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Tai nghe Chống ồn" class="blur-up" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <div class="rating skeleton">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="skeleton">Tai nghe Chống ồn</h3>
+                    <p class="skeleton">Âm thanh vòm 7.1, cách âm hoàn hảo cho mọi không gian làm việc.</p>
+                    <div class="price-row">
+                        <span class="price skeleton">3.000.000đ</span>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn-detail skeleton ripple-btn" 
+                                data-bs-toggle="modal" data-bs-target="#productModal"
+                                data-name="Tai nghe Chống ồn"
+                                data-price="3.000.000đ"
+                                data-img="https://picsum.photos/400/300?random=3"
+                                data-desc="Trang bị công nghệ chống ồn chủ động ANC tiên tiến nhất, tái tạo âm thanh vòm 7.1 chân thực.">
+                                Chi tiết
+                            </button>
+                            <button class="btn-buy skeleton ripple-btn" data-name="Tai nghe Chống ồn">Mua</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product Card 4 -->
+            <article class="product-card card reveal" style="transition-delay: 0.3s;">
+                <div class="product-image skeleton">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Màn hình 4K IPS" class="blur-up" loading="lazy">
+                    <span class="badge badge-hot fomo-pulse">💎 Bán chạy</span>
+                </div>
+                <div class="product-info">
+                    <div class="rating skeleton">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="skeleton">Màn hình 4K IPS</h3>
+                    <p class="skeleton">Độ phủ màu 100% sRGB, bảo vệ mắt và hiển thị siêu sắc nét.</p>
+                    <div class="price-row">
+                        <span class="price skeleton">8.500.000đ</span>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn-detail skeleton ripple-btn" 
+                                data-bs-toggle="modal" data-bs-target="#productModal"
+                                data-name="Màn hình 4K IPS"
+                                data-price="8.500.000đ"
+                                data-img="https://picsum.photos/400/300?random=4"
+                                data-desc="Tấm nền IPS cao cấp, tỷ lệ tương phản 1000:1, tích hợp chế độ bảo vệ mắt khỏi ánh sáng xanh.">
+                                Chi tiết
+                            </button>
+                            <button class="btn-buy skeleton ripple-btn" data-name="Màn hình 4K IPS">Mua</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <aside class="sidebar card reveal premium-sidebar" style="transition-delay: 0.4s;">
+            <h3>Kết nối với tôi</h3>
+            <div class="bento-social-grid">
+                <a href="https://www.facebook.com/zuck" target="_blank" class="bento-btn bento-fb ripple-btn">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/instagram" target="_blank" class="bento-btn bento-ig ripple-btn">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/@MrBeast" target="_blank" class="bento-btn bento-yt ripple-btn">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://github.com/caykeongot-git" target="_blank" class="bento-btn bento-gh ripple-btn">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- SVG Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,80 1440,60 L1440,120 L0,120 Z" fill="var(--card-bg)"/>
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-grid">
+            <div class="footer-col reveal">
+                <h4>Về Chúng Tôi</h4>
+                <p>Moshi Store - Chuyên cung cấp thiết bị công nghệ cao cấp và giải pháp setup góc làm việc tối ưu.</p>
+            </div>
+            <div class="footer-col reveal" style="transition-delay: 0.1s;">
+                <h4>Liên Kết Nhanh</h4>
+                <ul>
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal" style="transition-delay: 0.2s;">
+                <h4>Thông Tin Liên Hệ</h4>
+                <p><i class="fa-solid fa-envelope"></i> ninhza2005@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> 0916.897.032</p>
+            </div>
+        </div>
+        <div class="footer-bottom reveal" style="transition-delay: 0.3s;">
+            <p>Made with <span class="footer-heart">❤️</span> by Moshi &mdash; &copy; 2026</p>
+        </div>
+    </footer>
+
+    <!-- Vùng chứa Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Smart Cart Floating -->
+    <div id="smart-cart" class="smart-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+    </div>
+
+    <!-- Back To Top Button -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <!-- BOOTSTRAP MODAL CHI TIẾT SẢN PHẨM (PREMIUM APPLE STYLE) -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content premium-modal">
+                <button type="button" class="btn-close premium-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+                
+                <div class="premium-modal-body">
+                    <div class="premium-modal-image">
+                        <img id="modal-img" src="" alt="Product Image">
+                        <span class="premium-badge">Mới</span>
+                    </div>
+                    <div class="premium-modal-info">
+                        <div class="rating mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <h2 id="modal-name" class="fw-bold mb-3">Tên sản phẩm</h2>
+                        <p id="modal-desc" class="text-secondary mb-4">Mô tả chi tiết sản phẩm.</p>
+                        
+                        <ul class="premium-features mb-4">
+                            <li><i class="fa-solid fa-check"></i> Thiết kế công thái học cao cấp</li>
+                            <li><i class="fa-solid fa-check"></i> Bảo hành chính hãng 24 tháng</li>
+                            <li><i class="fa-solid fa-check"></i> Giao hàng hỏa tốc 2H</li>
+                        </ul>
+
+                        <div class="premium-modal-action">
+                            <h3 id="modal-price" class="premium-price mb-0">Giá tiền</h3>
+                            <button type="button" class="btn-buy premium-buy-btn ripple-btn" id="modal-buy-btn">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nhúng Bootstrap 5 JS Bundle (Đã bao gồm Popper.js cho Modal) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JS Logic tự viết -->
+    <script src="main.js"></script>
+</body>
+</html>
