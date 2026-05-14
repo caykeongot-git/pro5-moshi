@@ -71,7 +71,7 @@ html {
     scroll-snap-type: y proximity; /* Đổi sang proximity để không bị kẹt footer */
 }
 
-section {
+section, footer {
     scroll-snap-align: start;
     scroll-snap-stop: always;
 }
