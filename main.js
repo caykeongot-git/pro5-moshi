@@ -942,7 +942,7 @@ document.querySelectorAll('.bento-tilt').forEach(card => {
 });
 
 // --- OPTION 4: STAGGERED COUNTER ANIMATION ---
-function animateCounter(el) {
+function animateStatCounter(el) {
     const target = parseFloat(el.getAttribute('data-count'));
     const suffix = el.getAttribute('data-suffix') || '';
     const isDecimal = target % 1 !== 0;
@@ -973,13 +973,13 @@ function animateCounter(el) {
 }
 
 // Theo dõi các phần tử có data-count
-const counterElements = document.querySelectorAll('[data-count]');
-const counterObserver = new IntersectionObserver((entries) => {
+const statCounterElements = document.querySelectorAll('[data-count]');
+const statCounterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             if (!entry.target.dataset.counted) {
                 entry.target.dataset.counted = 'true';
-                animateCounter(entry.target);
+                animateStatCounter(entry.target);
             }
         } else {
             // Reset khi ra khỏi viewport để chạy lại khi cuộn lại
@@ -989,4 +989,4 @@ const counterObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-counterElements.forEach(el => counterObserver.observe(el));
+statCounterElements.forEach(el => statCounterObserver.observe(el));
