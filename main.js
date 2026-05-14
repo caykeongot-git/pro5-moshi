@@ -886,3 +886,107 @@ if (canvas) {
     initCanvas();
     renderCanvas();
 }
+
+// ==========================================================================
+// PEAK UI/UX PHASE 4 (THE FUN UPGRADES)
+// ==========================================================================
+
+// --- OPTION 2: SCROLL PROGRESS BAR ---
+const scrollProgressBar = document.getElementById('scroll-progress');
+if (scrollProgressBar) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgressBar.style.width = scrollPercent + '%';
+    }, { passive: true });
+}
+
+// --- OPTION 1: MAGNETIC BUTTONS ---
+document.querySelectorAll('.magnetic-btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        // Kéo nhẹ nhàng 30% về phía chuột
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+    });
+});
+
+// --- OPTION 3: CARD SPOTLIGHT EFFECT ---
+document.querySelectorAll('.bento-tilt').forEach(card => {
+    // Tạo lớp spotlight nếu chưa có
+    if (!card.querySelector('.card-spotlight')) {
+        const spotlight = document.createElement('div');
+        spotlight.classList.add('card-spotlight');
+        card.style.position = 'relative';
+        card.appendChild(spotlight);
+    }
+    
+    card.addEventListener('mousemove', (e) => {
+        const spotlight = card.querySelector('.card-spotlight');
+        if (!spotlight) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        spotlight.style.background = `radial-gradient(circle 150px at ${x}px ${y}px, rgba(255,255,255,0.12), transparent 80%)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        const spotlight = card.querySelector('.card-spotlight');
+        if (spotlight) spotlight.style.background = 'none';
+    });
+});
+
+// --- OPTION 4: STAGGERED COUNTER ANIMATION ---
+function animateCounter(el) {
+    const target = parseFloat(el.getAttribute('data-count'));
+    const suffix = el.getAttribute('data-suffix') || '';
+    const isDecimal = target % 1 !== 0;
+    const duration = 1500; // 1.5 giây
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Easing: ease-out quad
+        const eased = 1 - (1 - progress) * (1 - progress);
+        const current = eased * target;
+        
+        if (isDecimal) {
+            el.textContent = current.toFixed(2) + suffix;
+        } else {
+            el.textContent = Math.floor(current) + suffix;
+        }
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            // Đảm bảo giá trị cuối cùng chính xác
+            el.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+        }
+    }
+    requestAnimationFrame(update);
+}
+
+// Theo dõi các phần tử có data-count
+const counterElements = document.querySelectorAll('[data-count]');
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            if (!entry.target.dataset.counted) {
+                entry.target.dataset.counted = 'true';
+                animateCounter(entry.target);
+            }
+        } else {
+            // Reset khi ra khỏi viewport để chạy lại khi cuộn lại
+            delete entry.target.dataset.counted;
+            entry.target.textContent = '0';
+        }
+    });
+}, { threshold: 0.5 });
+
+counterElements.forEach(el => counterObserver.observe(el));
