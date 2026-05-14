@@ -1670,12 +1670,12 @@ body.red-team-mode h2 {
     height: 60vh;
     border-radius: 50%;
     background: radial-gradient(circle, var(--apple-blue) 0%, transparent 70%);
-    opacity: 0.05;
+    opacity: 0.08; /* Tăng lên cho Light Mode thấy rõ */
     filter: blur(100px);
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: -3; /* Nằm dưới cùng */
-    will-change: opacity; /* Tối ưu GPU */
+    z-index: -3;
+    will-change: opacity;
     animation: aura-breathe 8s ease-in-out infinite alternate;
 }
 @keyframes aura-breathe {

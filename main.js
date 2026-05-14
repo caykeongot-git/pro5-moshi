@@ -824,7 +824,7 @@ if (canvas) {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = document.body.classList.contains('red-team-mode') ? '#ff0000' : 'rgba(100, 100, 100, 0.5)';
+            ctx.fillStyle = document.body.classList.contains('red-team-mode') ? '#ff0000' : (document.body.classList.contains('dark-theme') ? 'rgba(150, 150, 150, 0.5)' : 'rgba(0, 113, 227, 0.25)');
             ctx.fill();
         }
     }
@@ -863,7 +863,7 @@ if (canvas) {
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
                     const opacity = 1 - (distSq / 15000);
-                    ctx.strokeStyle = document.body.classList.contains('red-team-mode') ? `rgba(255,0,0,${opacity * 0.5})` : `rgba(150,150,150,${opacity * 0.3})`;
+                    ctx.strokeStyle = document.body.classList.contains('red-team-mode') ? `rgba(255,0,0,${opacity * 0.5})` : (document.body.classList.contains('dark-theme') ? `rgba(150,150,150,${opacity * 0.3})` : `rgba(0,113,227,${opacity * 0.15})`);
                     ctx.lineWidth = 1;
                     ctx.stroke();
                 }
@@ -932,7 +932,18 @@ document.querySelectorAll('.bento-tilt').forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        spotlight.style.background = `radial-gradient(circle 150px at ${x}px ${y}px, rgba(255,255,255,0.12), transparent 80%)`;
+        // Light mode: dùng ánh sáng xanh Apple, Dark mode: dùng ánh sáng trắng
+        const isDark = document.body.classList.contains('dark-theme');
+        const isRedTeam = document.body.classList.contains('red-team-mode');
+        let color;
+        if (isRedTeam) {
+            color = 'rgba(255, 0, 0, 0.1)';
+        } else if (isDark) {
+            color = 'rgba(255, 255, 255, 0.12)';
+        } else {
+            color = 'rgba(0, 113, 227, 0.08)';
+        }
+        spotlight.style.background = `radial-gradient(circle 180px at ${x}px ${y}px, ${color}, transparent 80%)`;
     });
     
     card.addEventListener('mouseleave', () => {
