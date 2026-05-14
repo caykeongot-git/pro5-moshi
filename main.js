@@ -105,31 +105,37 @@ const revealElements = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-            
-            // Option 5: Decryption Reveal Effect
-            const decryptEls = entry.target.querySelectorAll('.decrypt-text');
-            decryptEls.forEach(el => {
-                const originalText = el.getAttribute('data-text');
-                if (!originalText) return;
-                const chars = '!<>-_\\/[]{}—=+*^?#________';
-                let iterations = 0;
-                const maxIterations = 35; // Kéo dài thời gian giải mã
+            if (!entry.target.classList.contains('visible')) {
+                entry.target.classList.add('visible');
                 
-                const interval = setInterval(() => {
-                    el.innerText = originalText.split('').map((char, index) => {
-                        if(index < iterations / 3) return char; // Chữ hiện ra chậm hơn
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    }).join('');
+                // Option 5: Decryption Reveal Effect
+                const decryptEls = entry.target.querySelectorAll('.decrypt-text');
+                decryptEls.forEach(el => {
+                    const originalText = el.getAttribute('data-text');
+                    if (!originalText) return;
                     
-                    if(iterations >= maxIterations) {
-                        clearInterval(interval);
-                        el.innerText = originalText;
-                    }
-                    iterations++;
-                }, 40); // 40ms * 35 = 1.4s
-            });
+                    if (el.decryptInterval) clearInterval(el.decryptInterval);
+                    
+                    const chars = '!<>-_\\/[]{}—=+*^?#________';
+                    let iterations = 0;
+                    const maxIterations = 35; // Kéo dài thời gian giải mã
+                    
+                    el.decryptInterval = setInterval(() => {
+                        el.innerText = originalText.split('').map((char, index) => {
+                            if(index < iterations / 3) return char; // Chữ hiện ra chậm hơn
+                            return chars[Math.floor(Math.random() * chars.length)];
+                        }).join('');
+                        
+                        if(iterations >= maxIterations) {
+                            clearInterval(el.decryptInterval);
+                            el.innerText = originalText;
+                        }
+                        iterations++;
+                    }, 40); // 40ms * 35 = 1.4s
+                });
+            }
+        } else {
+            entry.target.classList.remove('visible');
         }
     });
 }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
