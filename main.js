@@ -956,7 +956,10 @@ document.querySelectorAll('.bento-tilt').forEach(card => {
 function animateStatCounter(el) {
     const target = parseFloat(el.getAttribute('data-count'));
     const suffix = el.getAttribute('data-suffix') || '';
-    const isDecimal = target % 1 !== 0;
+    const originalStr = el.getAttribute('data-count');
+    // Xác định số chữ số thập phân từ chuỗi gốc
+    const decimalPlaces = originalStr.includes('.') ? originalStr.split('.')[1].length : 0;
+    const isDecimal = decimalPlaces > 0;
     const duration = 1500; // 1.5 giây
     const startTime = performance.now();
     
@@ -968,7 +971,7 @@ function animateStatCounter(el) {
         const current = eased * target;
         
         if (isDecimal) {
-            el.textContent = current.toFixed(2) + suffix;
+            el.textContent = current.toFixed(decimalPlaces) + suffix;
         } else {
             el.textContent = Math.floor(current) + suffix;
         }
@@ -976,8 +979,8 @@ function animateStatCounter(el) {
         if (progress < 1) {
             requestAnimationFrame(update);
         } else {
-            // Đảm bảo giá trị cuối cùng chính xác
-            el.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+            // Đảm bảo giá trị cuối cùng chính xác theo bảng điểm gốc
+            el.textContent = (isDecimal ? target.toFixed(decimalPlaces) : target) + suffix;
         }
     }
     requestAnimationFrame(update);
