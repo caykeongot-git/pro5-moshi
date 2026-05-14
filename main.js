@@ -990,3 +990,53 @@ const statCounterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 statCounterElements.forEach(el => statCounterObserver.observe(el));
+
+// ==========================================================================
+// PEAK UI/UX PHASE 5 (THE FINAL BOSS)
+// ==========================================================================
+
+// --- OPTION A: PARALLAX DEPTH HERO ---
+const heroParallax = document.getElementById('hero-parallax');
+if (heroParallax) {
+    const layers = heroParallax.querySelectorAll('.parallax-layer');
+    
+    heroParallax.addEventListener('mousemove', (e) => {
+        const rect = heroParallax.getBoundingClientRect();
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const x = e.clientX - rect.left - centerX;
+        const y = e.clientY - rect.top - centerY;
+        
+        layers.forEach(layer => {
+            const speed = parseFloat(layer.getAttribute('data-speed') || 0);
+            const translateX = x * speed;
+            const translateY = y * speed;
+            layer.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        });
+    });
+    
+    heroParallax.addEventListener('mouseleave', () => {
+        layers.forEach(layer => {
+            layer.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+// --- OPTION C: SYSTEM STATUS - UPTIME COUNTER ---
+const uptimeEl = document.getElementById('uptime-counter');
+if (uptimeEl) {
+    const birthDate = new Date('2005-01-01T00:00:00');
+    
+    function updateUptime() {
+        const now = new Date();
+        const diff = now - birthDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+        uptimeEl.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
+    }
+    
+    updateUptime();
+    setInterval(updateUptime, 1000); // Cập nhật mỗi giây
+}

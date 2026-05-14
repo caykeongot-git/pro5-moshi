@@ -74,14 +74,14 @@
 
     <!-- ===== HERO SECTION ===== -->
     <section id="home" class="hero">
-        <div class="hero-card reveal">
-            <div class="hero-greeting">
+        <div class="hero-card reveal" id="hero-parallax">
+            <div class="hero-greeting parallax-layer" data-speed="0.08">
                 <span class="hero-emoji">🛡️</span>
                 <span class="hero-label">Red Team Operator • Smart Contract Auditor</span>
             </div>
-            <h1 class="hero-title shimmer-text">Nguyễn Đình An Ninh</h1>
-            <p class="hero-subtitle" id="typing-target"></p>
-            <div class="hero-cta-group">
+            <h1 class="hero-title shimmer-text parallax-layer" data-speed="0.04">Nguyễn Đình An Ninh</h1>
+            <p class="hero-subtitle parallax-layer" data-speed="0.02" id="typing-target"></p>
+            <div class="hero-cta-group parallax-layer" data-speed="0.01">
                 <a href="#about" class="btn-primary ripple-btn magnetic-btn">
                     <i class="fa-solid fa-user-secret"></i> Khám phá
                 </a>
@@ -89,7 +89,7 @@
                     <i class="fa-solid fa-paper-plane"></i> Liên hệ
                 </a>
             </div>
-            <div class="hero-scroll-indicator">
+            <div class="hero-scroll-indicator parallax-layer" data-speed="0.06">
                 <div class="scroll-mouse">
                     <div class="scroll-wheel"></div>
                 </div>
@@ -456,7 +456,7 @@
         </svg>
     </div>
 
-    <!-- ===== CONTACT / FOOTER ===== -->
+    <!-- ===== CONTACT / FOOTER (SYSTEM STATUS DASHBOARD) ===== -->
     <footer id="contact" class="footer">
         <div class="footer-grid">
             <div class="footer-col reveal">
@@ -477,10 +477,10 @@
             <div class="footer-col reveal" style="transition-delay: 0.2s;">
                 <h4>Kết nối</h4>
                 <div class="bento-social-grid" style="display: flex; gap: 16px; justify-content: center; margin-top: 10px;">
-                    <a href="https://github.com/caykeongot-git" target="_blank" class="bento-btn bento-gh ripple-btn" style="padding: 16px; border-radius: 50%; width: 60px; height: 60px;">
+                    <a href="https://github.com/caykeongot-git" target="_blank" class="bento-btn bento-gh ripple-btn magnetic-btn" style="padding: 16px; border-radius: 50%; width: 60px; height: 60px;">
                         <i class="fa-brands fa-github" style="margin: 0;"></i>
                     </a>
-                    <a href="mailto:ninhza2005@gmail.com" class="bento-btn bento-mail ripple-btn" style="padding: 16px; border-radius: 50%; width: 60px; height: 60px;">
+                    <a href="mailto:ninhza2005@gmail.com" class="bento-btn bento-mail ripple-btn magnetic-btn" style="padding: 16px; border-radius: 50%; width: 60px; height: 60px;">
                         <i class="fa-solid fa-envelope" style="margin: 0; color: #0071E3;"></i>
                     </a>
                 </div>
@@ -488,7 +488,27 @@
             </div>
         </div>
         
-        <div class="footer-bottom reveal" style="transition-delay: 0.3s;">
+        <!-- System Status Dashboard -->
+        <div class="system-status reveal" style="transition-delay: 0.3s;">
+            <div class="status-line">
+                <span class="status-label">STATUS</span>
+                <span class="status-value"><span class="status-dot online"></span> ONLINE</span>
+            </div>
+            <div class="status-line">
+                <span class="status-label">UPTIME</span>
+                <span class="status-value" id="uptime-counter">calculating...</span>
+            </div>
+            <div class="status-line">
+                <span class="status-label">LAST_DEPLOY</span>
+                <span class="status-value">2026</span>
+            </div>
+            <div class="status-line">
+                <span class="status-label">CLEARANCE</span>
+                <span class="status-value" style="color: #FF2D55;">RED TEAM</span>
+            </div>
+        </div>
+        
+        <div class="footer-bottom reveal" style="transition-delay: 0.4s;">
             <p>Made with <span class="footer-heart">❤️</span> by Moshi &mdash; &copy; 2026</p>
         </div>
     </footer>
