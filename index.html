@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moshi — Red Team Operator & Smart Contract Auditor</title>
+    <meta name="description" content="Portfolio của Nguyễn Đình An Ninh (Moshi) — Chuyên gia Offensive Security & Blockchain Auditing">
+    <meta name="author" content="Nguyễn Đình An Ninh">
+    <meta name="keywords" content="cybersecurity, red team, smart contract auditor, blockchain, portfolio">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Moshi — Red Team Operator & Smart Contract Auditor">
+    <meta property="og:description" content="Portfolio của Nguyễn Đình An Ninh — Offensive Security & Blockchain Auditing">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Devicon (Cho logo ngôn ngữ lập trình) -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 🌟 Màn hình Intro (Hello Apple) 🌟 -->
+    <div id="apple-intro">
+        <div class="intro-content">
+            <i class="fa-solid fa-shield-halved intro-apple"></i>
+            <span class="intro-hello">Moshi</span>
+        </div>
+    </div>
+
+    <!-- 🌟 Background Watermark 🌟 -->
+    <div class="apple-bg-watermark">
+        <i class="fa-solid fa-shield-halved"></i>
+    </div>
+
+    <!-- Custom Magnetic Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Thanh Progress Bar hiển thị % cuộn trang -->
+    <div id="scroll-progress"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="logo">Moshi<span class="logo-dot">.</span></div>
+        <nav class="main-nav" id="mainNav">
+            <a href="#home" class="nav-link active" data-section="home">Home</a>
+            <a href="#about" class="nav-link" data-section="about">About</a>
+            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+            <a href="#journey" class="nav-link" data-section="journey">Journey</a>
+            <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="home" class="hero">
+        <div class="hero-card reveal">
+            <div class="hero-greeting">
+                <span class="hero-emoji">🛡️</span>
+                <span class="hero-label">Red Team Operator • Smart Contract Auditor</span>
+            </div>
+            <h1 class="hero-title shimmer-text">Nguyễn Đình An Ninh</h1>
+            <p class="hero-subtitle" id="typing-target"></p>
+            <div class="hero-cta-group">
+                <a href="#about" class="btn-primary ripple-btn">
+                    <i class="fa-solid fa-user-secret"></i> Khám phá
+                </a>
+                <a href="#contact" class="btn-outline ripple-btn">
+                    <i class="fa-solid fa-paper-plane"></i> Liên hệ
+                </a>
+            </div>
+            <div class="hero-scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span>Scroll down</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Marquee -->
+    <div class="testimonial-marquee-wrapper">
+        <div class="testimonial-marquee">
+            <span><i class="fa-solid fa-shield-halved" style="color: #0071E3; margin-right: 6px;"></i> Offensive Security Enthusiast</span>
+            <span><i class="fa-solid fa-link" style="color: #AF52DE; margin-right: 6px;"></i> Smart Contract Auditor in Training</span>
+            <span><i class="fa-solid fa-robot" style="color: #F5A623; margin-right: 6px;"></i> AI Power User: ChatGPT Pro • Claude Max • Gemini Ultra • Grok Heavy</span>
+            <span><i class="fa-solid fa-code" style="color: #34C759; margin-right: 6px;"></i> C++ • Solidity • Python • JavaScript</span>
+            <!-- Duplicate for infinite scroll -->
+            <span><i class="fa-solid fa-shield-halved" style="color: #0071E3; margin-right: 6px;"></i> Offensive Security Enthusiast</span>
+            <span><i class="fa-solid fa-link" style="color: #AF52DE; margin-right: 6px;"></i> Smart Contract Auditor in Training</span>
+            <span><i class="fa-solid fa-robot" style="color: #F5A623; margin-right: 6px;"></i> AI Power User: ChatGPT Pro • Claude Max • Gemini Ultra • Grok Heavy</span>
+            <span><i class="fa-solid fa-code" style="color: #34C759; margin-right: 6px;"></i> C++ • Solidity • Python • JavaScript</span>
+        </div>
+    </div>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="section-about">
+        <div class="section-header reveal">
+            <h2 class="decrypt-text" data-text="About Me">About Me</h2>
+            <div class="section-line"></div>
+            <p>Câu chuyện từ zero đến hero</p>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p class="about-lead">
+                    Sinh viên năm 3 ngành <strong>Công Nghệ Thông Tin</strong>, chuyên ngành <strong>An Ninh Mạng</strong>. 
+                    Đam mê <strong>Offensive Security</strong> và <strong>Blockchain Auditing</strong>.
+                </p>
+                <p>
+                    Từ GPA <span class="highlight-text">2.81</span> năm nhất đến <span class="highlight-text">3.33 Loại Giỏi</span> — 
+                    không phải thiên tài, mà là kết quả của <strong>sự kiên trì</strong>. 
+                    Hiện tại đang grind hàng ngày trên con đường trở thành 
+                    <strong>Elite Red Team Operator</strong> và <strong>Smart Contract Auditor</strong>.
+                </p>
+                <p>
+                    Trang bị <strong>bộ AI mạnh nhất thế giới</strong> — ChatGPT Pro, Claude Max, Gemini Ultra, Grok Heavy — 
+                    để tăng tốc học tập và nghiên cứu bảo mật 24/7.
+                </p>
+            </div>
+            <div class="about-stats reveal" style="transition-delay: 0.15s;">
+                <div class="stat-card">
+                    <div class="stat-number">3.33</div>
+                    <div class="stat-label">GPA Tích Lũy</div>
+                    <div class="stat-badge">Loại Giỏi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">9.8</div>
+                    <div class="stat-label">DSA & Algorithms</div>
+                    <div class="stat-badge">Top Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Tín Chỉ Tích Lũy</div>
+                    <div class="stat-badge">Year 3</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">AI Subscriptions</div>
+                    <div class="stat-badge">Pro/Max/Ultra</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section id="skills" class="section-skills">
+        <div class="section-header reveal">
+            <h2 class="decrypt-text" data-text="Skills & Arsenal">Skills & Arsenal</h2>
+            <div class="section-line"></div>
+            <p>Bộ vũ khí và công cụ chiến đấu</p>
+        </div>
+
+        <div class="skills-bento-grid">
+            <!-- Languages -->
+            <div class="skill-card skill-card-large bento-tilt reveal">
+                <div class="skill-card-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class="devicon-cplusplus-plain colored"></i> C/C++</span>
+                    <span class="skill-tag"><i class="devicon-csharp-plain colored"></i> C#</span>
+                    <span class="skill-tag"><i class="fa-solid fa-microchip" style="color: #607D8B;"></i> Assembly</span>
+                    <span class="skill-tag"><i class="fa-solid fa-file-code" style="color: #2196F3;"></i> Pascal</span>
+                    <span class="skill-tag"><i class="devicon-java-plain colored"></i> Java</span>
+                    <span class="skill-tag"><i class="devicon-solidity-plain colored"></i> Solidity</span>
+                    <span class="skill-tag"><i class="devicon-python-plain colored"></i> Python</span>
+                    <span class="skill-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                    <span class="skill-tag"><i class="devicon-php-plain colored"></i> PHP</span>
+                    <span class="skill-tag"><i class="devicon-bash-plain colored"></i> Bash/Shell</span>
+                    <span class="skill-tag"><i class="devicon-mysql-plain colored"></i> SQL</span>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="skill-card bento-tilt reveal" style="transition-delay: 0.1s;">
+                <div class="skill-card-icon" style="color: #FF3B30;"><i class="fa-solid fa-skull-crossbones"></i></div>
+                <h3>Security Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class="devicon-kali-plain colored"></i> Kali Linux</span>
+                    <span class="skill-tag"><i class="devicon-ubuntu-plain colored"></i> Ubuntu</span>
+                    <span class="skill-tag"><i class="fa-solid fa-spider" style="color: #FF6600;"></i> Burp Suite</span>
+                    <span class="skill-tag"><i class="fa-solid fa-network-wired" style="color: #4CAF50;"></i> Nmap</span>
+                    <span class="skill-tag"><i class="fa-solid fa-bug" style="color: #1976D2;"></i> Metasploit</span>
+                    <span class="skill-tag"><i class="fa-solid fa-fish" style="color: #00A6D6;"></i> Wireshark</span>
+                    <span class="skill-tag"><i class="fa-solid fa-cube" style="color: #9C27B0;"></i> HackTheBox</span>
+                    <span class="skill-tag"><i class="fa-solid fa-laptop-code" style="color: #4CAF50;"></i> TryHackMe</span>
+                    <span class="skill-tag"><i class="fa-solid fa-shield-cat" style="color: #FF9800;"></i> PortSwigger</span>
+                </div>
+            </div>
+
+            <!-- Blockchain -->
+            <div class="skill-card bento-tilt reveal" style="transition-delay: 0.2s;">
+                <div class="skill-card-icon" style="color: #AF52DE;"><i class="fa-solid fa-link"></i></div>
+                <h3>Blockchain</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class="fa-brands fa-ethereum" style="color: #3C3C3D;"></i> Remix IDE</span>
+                    <span class="skill-tag"><i class="fa-solid fa-hammer" style="color: #FF5722;"></i> Foundry</span>
+                    <span class="skill-tag"><i class="fa-solid fa-ghost" style="color: #9C27B0;"></i> Ethernaut</span>
+                    <span class="skill-tag"><i class="fa-solid fa-skull" style="color: #4CAF50;"></i> CryptoZombies</span>
+                    <span class="skill-tag"><i class="fa-solid fa-money-bill-wave" style="color: #FFC107;"></i> DeFi Vuln</span>
+                    <span class="skill-tag"><i class="fa-solid fa-shield-halved" style="color: #2196F3;"></i> OpenZeppelin</span>
+                    <span class="skill-tag"><i class="fa-solid fa-trophy" style="color: #FF9800;"></i> Code4rena</span>
+                    <span class="skill-tag"><i class="fa-solid fa-magnifying-glass" style="color: #607D8B;"></i> Sherlock</span>
+                    <span class="skill-tag"><i class="fa-solid fa-shield-heart" style="color: #E91E63;"></i> Immunefi</span>
+                </div>
+            </div>
+
+            <!-- Web Dev -->
+            <div class="skill-card bento-tilt reveal" style="transition-delay: 0.3s;">
+                <div class="skill-card-icon" style="color: #34C759;"><i class="fa-solid fa-globe"></i></div>
+                <h3>Web Development</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class="devicon-html5-plain colored"></i> HTML/CSS/JS</span>
+                    <span class="skill-tag"><i class="devicon-react-original colored"></i> React</span>
+                    <span class="skill-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+                    <span class="skill-tag"><i class="devicon-php-plain colored"></i> PHP MVC</span>
+                    <span class="skill-tag"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+                    <span class="skill-tag"><i class="devicon-microsoftsqlserver-plain colored"></i> SQL Server</span>
+                    <span class="skill-tag"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+                </div>
+            </div>
+
+            <!-- AI Arsenal -->
+            <div class="skill-card skill-card-featured bento-tilt reveal" style="transition-delay: 0.35s;">
+                <div class="skill-card-icon" style="color: #F5A623;"><i class="fa-solid fa-robot"></i></div>
+                <h3>AI Arsenal</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag tag-chatgpt"><i class="fa-solid fa-bolt"></i> ChatGPT Pro</span>
+                    <span class="skill-tag tag-claude"><i class="fa-solid fa-brain"></i> Claude Max</span>
+                    <span class="skill-tag tag-gemini"><i class="fa-solid fa-gem"></i> Gemini Ultra</span>
+                    <span class="skill-tag tag-grok"><i class="fa-solid fa-satellite-dish"></i> Grok Heavy</span>
+                </div>
+            </div>
+
+            <!-- DevOps / Tools -->
+            <div class="skill-card bento-tilt reveal" style="transition-delay: 0.4s;">
+                <div class="skill-card-icon" style="color: #0071E3;"><i class="fa-solid fa-toolbox"></i></div>
+                <h3>DevOps & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class="devicon-git-plain colored"></i> Git</span>
+                    <span class="skill-tag"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+                    <span class="skill-tag"><i class="fa-solid fa-desktop" style="color: #607D8B;"></i> VMware</span>
+                    <span class="skill-tag"><i class="devicon-docker-plain colored"></i> Docker</span>
+                    <span class="skill-tag"><i class="devicon-linux-plain colored"></i> Linux</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== JOURNEY TIMELINE ===== -->
+    <section id="journey" class="section-journey">
+        <div class="section-header reveal">
+            <h2 class="decrypt-text" data-text="My Journey">My Journey</h2>
+            <div class="section-line"></div>
+            <p>Hành trình từ zero đến hacker</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content bento-tilt">
+                    <span class="timeline-year">2005</span>
+                    <h3>Born in Tây Ninh 🌱</h3>
+                    <p>Bắt đầu hành trình cuộc đời tại vùng đất biên giới</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal" style="transition-delay: 0.1s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content bento-tilt">
+                    <span class="timeline-year">2010 — 2015</span>
+                    <h3>5 Năm Học Sinh Giỏi ⭐</h3>
+                    <p>Nền tảng vững chắc từ những năm tiểu học</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal" style="transition-delay: 0.15s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content bento-tilt">
+                    <span class="timeline-year">2015 — 2019</span>
+                    <h3>4 Năm Học Sinh Khá 📚</h3>
+                    <p>Tiếp tục phát triển ở bậc trung học cơ sở</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal" style="transition-delay: 0.2s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content bento-tilt">
+                    <span class="timeline-year">2023</span>
+                    <h3>Bước Vào Đại Học — Ngành CNTT 🎓</h3>
+                    <p>Chọn ngành Công Nghệ Thông Tin, bắt đầu hành trình mới</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal" style="transition-delay: 0.25s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content bento-tilt">
+                    <span class="timeline-year">2024</span>
+                    <h3>GPA Vươn Lên 3.21 — Loại Giỏi 📈</h3>
+                    <p>Điểm DSA 9.8, Toán rời rạc 9.8, top scores trong C++ và giải thuật. Nhận giấy khen.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal" style="transition-delay: 0.3s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content bento-tilt">
+                    <span class="timeline-year">2025</span>
+                    <h3>Pivot → CyberSecurity + Blockchain 🔐</h3>
+                    <p>Chuyển hướng sang Offensive Security và Smart Contract Auditing. Bắt đầu grind Ethernaut, PortSwigger, HackTheBox.</p>
+                </div>
+            </div>
+            <div class="timeline-item timeline-item-current reveal" style="transition-delay: 0.35s;">
+                <div class="timeline-dot timeline-dot-active"></div>
+                <div class="timeline-content bento-tilt">
+                    <span class="timeline-year">2026</span>
+                    <h3>Chuyên Ngành An Ninh Mạng — GPA 3.33 🛡️</h3>
+                    <p>Đăng ký chuyên ngành An Ninh Mạng. GPA tích lũy 3.33 Loại Giỏi. Full AI Arsenal (ChatGPT Pro, Claude Max, Gemini Ultra, Grok Heavy). Đang trên đường trở thành Elite Hacker.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EDUCATION HIGHLIGHTS ===== -->
+    <section id="education" class="section-education">
+        <div class="section-header reveal">
+            <h2 class="decrypt-text" data-text="Education Highlights">Education Highlights</h2>
+            <div class="section-line"></div>
+            <p>Những con điểm nổi bật nhất</p>
+        </div>
+
+        <div class="education-grid">
+            <div class="edu-card bento-tilt reveal">
+                <div class="edu-score">9.8</div>
+                <div class="edu-subject">Cấu trúc DL & Giải thuật</div>
+                <div class="edu-grade">Grade A</div>
+            </div>
+            <div class="edu-card bento-tilt reveal" style="transition-delay: 0.05s;">
+                <div class="edu-score">9.8</div>
+                <div class="edu-subject">Toán Rời Rạc</div>
+                <div class="edu-grade">Grade A</div>
+            </div>
+            <div class="edu-card bento-tilt reveal" style="transition-delay: 0.1s;">
+                <div class="edu-score">9.8</div>
+                <div class="edu-subject">Công Nghệ Phần Mềm</div>
+                <div class="edu-grade">Grade A</div>
+            </div>
+            <div class="edu-card bento-tilt reveal" style="transition-delay: 0.15s;">
+                <div class="edu-score">9.3</div>
+                <div class="edu-subject">Xác Suất Thống Kê</div>
+                <div class="edu-grade">Grade A</div>
+            </div>
+            <div class="edu-card bento-tilt reveal" style="transition-delay: 0.2s;">
+                <div class="edu-score">9.3</div>
+                <div class="edu-subject">Lập Trình Windows</div>
+                <div class="edu-grade">Grade A</div>
+            </div>
+            <div class="edu-card bento-tilt reveal" style="transition-delay: 0.25s;">
+                <div class="edu-score">9.0</div>
+                <div class="edu-subject">Mạng Máy Tính</div>
+                <div class="edu-grade">Grade A</div>
+            </div>
+            <div class="edu-card bento-tilt reveal" style="transition-delay: 0.3s;">
+                <div class="edu-score">8.5</div>
+                <div class="edu-subject">Bảo Mật Thông Tin</div>
+                <div class="edu-grade">Grade A</div>
+            </div>
+            <div class="edu-card bento-tilt reveal" style="transition-delay: 0.35s;">
+                <div class="edu-score">8.5</div>
+                <div class="edu-subject">Trí Tuệ Nhân Tạo</div>
+                <div class="edu-grade">Grade B+</div>
+            </div>
+        </div>
+
+        <div class="gpa-badge bento-tilt reveal" style="transition-delay: 0.4s;">
+            <div class="gpa-number">3.33</div>
+            <div class="gpa-label">GPA Tích Lũy / 4.0</div>
+            <div class="gpa-rank">🏆 Loại Giỏi</div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS SECTION ===== -->
+    <section id="projects" class="section-projects">
+        <div class="section-header reveal">
+            <h2 class="decrypt-text" data-text="Projects & Labs">Projects & Labs</h2>
+            <div class="section-line"></div>
+            <p>Những dự án và phòng thí nghiệm</p>
+        </div>
+
+        <div class="projects-grid">
+            <a href="https://blockchain-lab-by-ninhdeptrai.vercel.app/" target="_blank" class="project-card reveal ripple-btn">
+                <div class="project-icon"><i class="fa-solid fa-flask"></i></div>
+                <h3>Blockchain Security Lab</h3>
+                <p>Phòng thí nghiệm bảo mật Smart Contract — Các bài lab về Re-entrancy, Overflow, Access Control và hơn thế nữa.</p>
+                <div class="project-tech">
+                    <span>Solidity</span>
+                    <span>Ethernaut</span>
+                    <span>Vercel</span>
+                </div>
+                <div class="project-link">
+                    <span>Truy cập Lab</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <a href="https://github.com/caykeongot-git" target="_blank" class="project-card reveal ripple-btn" style="transition-delay: 0.1s;">
+                <div class="project-icon"><i class="fa-brands fa-github"></i></div>
+                <h3>GitHub Portfolio</h3>
+                <p>Tổng hợp source code các dự án học tập, thực hành bảo mật, và web development projects.</p>
+                <div class="project-tech">
+                    <span>C++</span>
+                    <span>JavaScript</span>
+                    <span>Python</span>
+                </div>
+                <div class="project-link">
+                    <span>Xem GitHub</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <div class="project-card project-card-wip reveal" style="transition-delay: 0.2s;">
+                <div class="project-icon"><i class="fa-solid fa-bug"></i></div>
+                <h3>Bug Bounty Journey</h3>
+                <p>Hành trình săn lỗi trên Code4rena, Sherlock, và Immunefi. Đang grind Ethernaut và Damn Vulnerable DeFi.</p>
+                <div class="project-tech">
+                    <span>Foundry</span>
+                    <span>Code4rena</span>
+                    <span>Immunefi</span>
+                </div>
+                <div class="project-status">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>In Progress</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SVG Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,80 1440,60 L1440,120 L0,120 Z" fill="var(--card-bg)"/>
+        </svg>
+    </div>
+
+    <!-- ===== CONTACT / FOOTER ===== -->
+    <footer id="contact" class="footer">
+        <div class="footer-grid">
+            <div class="footer-col reveal">
+                <h4>Nguyễn Đình An Ninh</h4>
+                <p>Aspiring Red Team Operator & Smart Contract Auditor. Luôn tìm kiếm cơ hội học hỏi và phát triển.</p>
+            </div>
+            
+            <div class="footer-col reveal" style="transition-delay: 0.1s;">
+                <h4>Liên kết</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#journey">Journey</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col reveal" style="transition-delay: 0.2s;">
+                <h4>Kết nối</h4>
+                <div class="bento-social-grid" style="display: flex; gap: 16px; justify-content: center; margin-top: 10px;">
+                    <a href="https://github.com/caykeongot-git" target="_blank" class="bento-btn bento-gh ripple-btn" style="padding: 16px; border-radius: 50%; width: 60px; height: 60px;">
+                        <i class="fa-brands fa-github" style="margin: 0;"></i>
+                    </a>
+                    <a href="mailto:ninhza2005@gmail.com" class="bento-btn bento-mail ripple-btn" style="padding: 16px; border-radius: 50%; width: 60px; height: 60px;">
+                        <i class="fa-solid fa-envelope" style="margin: 0; color: #0071E3;"></i>
+                    </a>
+                </div>
+                <p style="margin-top: 16px;"><i class="fa-solid fa-envelope"></i> ninhza2005@gmail.com</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom reveal" style="transition-delay: 0.3s;">
+            <p>Made with <span class="footer-heart">❤️</span> by Moshi &mdash; &copy; 2026</p>
+        </div>
+    </footer>
+
+    <!-- Vùng chứa Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Back To Top Button -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <!-- JS Logic -->
+    <script src="main.js"></script>
+</body>
+</html>

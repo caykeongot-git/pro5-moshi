@@ -107,6 +107,29 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
+            
+            // Option 5: Decryption Reveal Effect
+            const decryptEls = entry.target.querySelectorAll('.decrypt-text');
+            decryptEls.forEach(el => {
+                const originalText = el.getAttribute('data-text');
+                if (!originalText) return;
+                const chars = '!<>-_\\/[]{}—=+*^?#________';
+                let iterations = 0;
+                const maxIterations = 35; // Kéo dài thời gian giải mã
+                
+                const interval = setInterval(() => {
+                    el.innerText = originalText.split('').map((char, index) => {
+                        if(index < iterations / 3) return char; // Chữ hiện ra chậm hơn
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    }).join('');
+                    
+                    if(iterations >= maxIterations) {
+                        clearInterval(interval);
+                        el.innerText = originalText;
+                    }
+                    iterations++;
+                }, 40); // 40ms * 35 = 1.4s
+            });
         }
     });
 }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
@@ -153,7 +176,11 @@ function startTypingEffect() {
     const target = document.getElementById('typing-target');
     if (!target) return;
     
-    const lines = ['Khám phá bộ sưu tập sản phẩm độc đáo', 'với thiết kế hiện đại và tinh tế.'];
+    const lines = [
+        'Hacker mindset. Apple design.', 
+        'Grinding for a Supercar.',
+        'Learning Red Team & Smart Contract Security.'
+    ];
     let lineIndex = 0;
     let charIndex = 0;
     
@@ -444,51 +471,7 @@ function createBurst(x, y) {
     }
 }
 
-// ==========================================
-// TÂM LÝ HỌC: FLOATING SMART CART (Giỏ hàng thông minh)
-// ==========================================
-let cartItemsCount = 0;
-const smartCart = document.getElementById('smart-cart');
-const cartCountBadge = document.getElementById('cart-count');
-
-function addToCartEffect(e, productName) {
-    // 1. Phóng pháo hoa Dopamine tại tọa độ Click
-    if (e) createBurst(e.clientX, e.clientY);
-    
-    // 2. Hiện Toast
-    showToast(`Đã thêm <b>${productName}</b> vào giỏ hàng!`);
-    
-    // 3. Tăng số lượng & Hiện Giỏ Hàng Thông Minh
-    cartItemsCount++;
-    if(cartCountBadge) {
-        cartCountBadge.innerText = cartItemsCount;
-        cartCountBadge.classList.add('pop');
-        setTimeout(() => cartCountBadge.classList.remove('pop'), 300);
-    }
-    
-    if (smartCart && !smartCart.classList.contains('show')) {
-        smartCart.classList.add('show');
-    }
-}
-
-// Logic Nút Mua nằm bên ngoài danh sách sản phẩm
-document.querySelectorAll('.btn-buy:not(#modal-buy-btn)').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        addToCartEffect(e, e.target.getAttribute('data-name'));
-    });
-});
-
-// Logic Nút Mua nằm bên trong Modal
-document.getElementById('modal-buy-btn').addEventListener('click', (e) => {
-    addToCartEffect(e, e.target.getAttribute('data-name'));
-    
-    // Tự động đóng Modal Bootstrap sau khi click mua
-    const modalElement = document.getElementById('productModal');
-    const modalInstance = bootstrap.Modal.getInstance(modalElement);
-    if (modalInstance) {
-        modalInstance.hide();
-    }
-});
+// Removed Smart Cart logic for Portfolio
 
 // ==========================================
 // OPTION 2: ANIMATED NUMBER COUNTER (Đếm số bay)
@@ -542,7 +525,7 @@ priceElements.forEach(el => counterObserver.observe(el));
 // ==========================================
 // OPTION 1: SCROLLSPY (Điểm sáng Thanh Nav)
 // ==========================================
-const sections = document.querySelectorAll('#home, #products, #contact');
+const sections = document.querySelectorAll('#home, #about, #skills, #journey, #projects, #contact');
 const navLinks = document.querySelectorAll('.nav-link[data-section]');
 
 const spyObserver = new IntersectionObserver((entries) => {
@@ -591,7 +574,7 @@ document.querySelectorAll('.blur-up').forEach(img => {
 const originalTitle = document.title;
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-        document.title = 'Quay lại nha! 🥺 — Moshi Store';
+        document.title = 'Quay lại hack tiếp nào bro! 🛡️ — Moshi';
     } else {
         document.title = originalTitle;
     }
@@ -664,3 +647,236 @@ document.querySelectorAll('.product-card').forEach(card => {
     });
 });
 
+// ==========================================
+// PEAK UI/UX UPGRADES (OPTION 2, 3, 4)
+// ==========================================
+
+// --- OPTION 2: 3D MAGNETIC BENTO TILT ---
+const tiltCards = document.querySelectorAll('.bento-tilt');
+tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate tilt angles (max 10 degrees)
+        const tiltX = ((y - centerY) / centerY) * -10;
+        const tiltY = ((x - centerX) / centerX) * 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.transition = 'none'; // Remove transition for smooth tracking
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        card.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease';
+    });
+});
+
+// --- OPTION 3: ADAPTIVE SMART CURSOR ---
+// Text Hover
+const textElements = document.querySelectorAll('p, h1, h2, h3, h4, span:not(.skill-tag), a:not(.btn-outline):not(.btn-primary)');
+textElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        if(cursorOutline) cursorOutline.classList.add('cursor-text');
+        if(cursorDot) cursorDot.style.opacity = 0; // Hide dot when text cursor
+    });
+    el.addEventListener('mouseleave', () => {
+        if(cursorOutline) cursorOutline.classList.remove('cursor-text');
+        if(cursorDot) cursorDot.style.opacity = 1;
+    });
+});
+
+// AI Arsenal Hover
+const aiTags = {
+    '.tag-chatgpt': 'cursor-chatgpt',
+    '.tag-claude': 'cursor-claude',
+    '.tag-gemini': 'cursor-gemini',
+    '.tag-grok': 'cursor-grok'
+};
+
+for (const [selector, className] of Object.entries(aiTags)) {
+    document.querySelectorAll(selector).forEach(tag => {
+        tag.addEventListener('mouseenter', () => {
+            if(cursorOutline) cursorOutline.classList.add(className);
+            if(cursorDot) cursorDot.style.opacity = 0; // Let the glow outline take over
+        });
+        tag.addEventListener('mouseleave', () => {
+            if(cursorOutline) cursorOutline.classList.remove(className);
+            if(cursorDot) cursorDot.style.opacity = 1;
+        });
+    });
+}
+
+// --- OPTION 4: RED TEAM MODE (HACK EASTER EGG) ---
+let keyBuffer = [];
+const secretCode = ['h', 'a', 'c', 'k'];
+
+// Thêm âm thanh siêu nhỏ (Beep) nếu trình duyệt cho phép
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function playHackSound() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    oscillator.type = 'sawtooth';
+    oscillator.frequency.setValueAtTime(150, audioCtx.currentTime); // Low bass
+    oscillator.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.5);
+    
+    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.5);
+}
+
+document.addEventListener('keydown', (e) => {
+    // Only capture letters to avoid breaking other functionalities
+    if(e.key.length !== 1) return;
+    
+    const key = e.key.toLowerCase();
+    keyBuffer.push(key);
+    
+    // Keep only the last 4 keys
+    if (keyBuffer.length > secretCode.length) {
+        keyBuffer.shift();
+    }
+    
+    // Check if buffer matches "hack"
+    if (keyBuffer.join('') === secretCode.join('')) {
+        document.body.classList.toggle('red-team-mode');
+        
+        if (document.body.classList.contains('red-team-mode')) {
+            showToast("⚠️ RED TEAM MODE ACTIVATED");
+            try { playHackSound(); } catch(err) { console.error(err); }
+        } else {
+            showToast("🍏 Apple Premium Mode Restored");
+        }
+        
+        // Clear buffer so they can type it again
+        keyBuffer = [];
+    }
+});
+
+// --- OPTION 8: BLOCKCHAIN NETWORK CANVAS (OPTIMIZED FOR WEAK DEVICES) ---
+const canvas = document.getElementById('network-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    const maxParticles = 40; // Giới hạn chỉ 40 hạt để không bị lag máy yếu
+    let animationFrameId;
+    let isCanvasActive = true;
+    
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+    
+    class Particle {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.8;
+            this.vy = (Math.random() - 0.5) * 0.8;
+            this.radius = Math.random() * 2 + 1;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            // Lực hút từ chuột (mouseX, mouseY đang được cập nhật ở Cursor Logic)
+            if (mouseX && mouseY) {
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distSq = dx * dx + dy * dy;
+                // Nếu chuột ở gần, hút nhẹ về phía chuột
+                if (distSq < 20000) {
+                    this.vx += dx * 0.0001;
+                    this.vy += dy * 0.0001;
+                }
+            }
+            
+            // Giới hạn tốc độ
+            const speedSq = this.vx * this.vx + this.vy * this.vy;
+            if (speedSq > 2) {
+                this.vx *= 0.95;
+                this.vy *= 0.95;
+            }
+            
+            // Bounce off edges
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = document.body.classList.contains('red-team-mode') ? '#ff0000' : 'rgba(100, 100, 100, 0.5)';
+            ctx.fill();
+        }
+    }
+    
+    function initCanvas() {
+        resizeCanvas();
+        particles = [];
+        // Nếu user bật Reduced Motion (Tiết kiệm Pin), giảm xuống 10 hạt
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const pCount = prefersReducedMotion ? 10 : maxParticles;
+        
+        for(let i=0; i<pCount; i++) {
+            particles.push(new Particle());
+        }
+        window.addEventListener('resize', resizeCanvas);
+    }
+    
+    function renderCanvas() {
+        if (!isCanvasActive) return; // Dừng render nếu tab bị ẩn
+        
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            
+            // Vẽ đường nối giữa các Node gần nhau
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distSq = dx * dx + dy * dy;
+                
+                // Dùng bình phương thay vì Math.sqrt() để GPU/CPU khỏi tính toán nặng
+                if (distSq < 15000) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    const opacity = 1 - (distSq / 15000);
+                    ctx.strokeStyle = document.body.classList.contains('red-team-mode') ? `rgba(255,0,0,${opacity * 0.5})` : `rgba(150,150,150,${opacity * 0.3})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+        }
+        animationFrameId = requestAnimationFrame(renderCanvas);
+    }
+    
+    // Tự động tạm dừng Canvas khi user chuyển Tab
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isCanvasActive = false;
+            cancelAnimationFrame(animationFrameId);
+        } else {
+            isCanvasActive = true;
+            renderCanvas();
+        }
+    });
+    
+    initCanvas();
+    renderCanvas();
+}
