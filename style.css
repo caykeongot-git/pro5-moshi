@@ -1780,13 +1780,83 @@ body.red-team-mode #scroll-progress {
    PEAK UI/UX PHASE 5 (THE FINAL BOSS)
    ========================================================================== */
 
-/* --- OPTION A: PARALLAX DEPTH HERO --- */
+/* --- OPTION A: PARALLAX — Tăng tốc độ cho rõ hơn --- */
 .parallax-layer {
     will-change: transform;
-    transition: transform 0.15s ease-out;
+    transition: transform 0.12s ease-out;
 }
 
-/* --- OPTION B: TIMELINE PULSE --- */
+/* --- OPTION C: SYSTEM STATUS DASHBOARD --- */
+.system-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 20px 32px;
+    margin: 32px auto 0;
+    max-width: 800px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-color);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+body.dark-theme .system-status {
+    background: rgba(255, 255, 255, 0.04);
+}
+body.red-team-mode .system-status {
+    background: rgba(255, 0, 0, 0.05);
+    border-color: rgba(255, 0, 0, 0.2);
+}
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+.status-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+.status-label::after {
+    content: ':';
+    margin-right: 2px;
+}
+.status-value {
+    color: var(--text-primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.status-dot.online {
+    background: #34C759;
+    box-shadow: 0 0 6px #34C759, 0 0 12px rgba(52, 199, 89, 0.4);
+    animation: status-blink 2s ease-in-out infinite;
+}
+@keyframes status-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+body.red-team-mode .status-dot.online {
+    background: #ff0000;
+    box-shadow: 0 0 6px #ff0000, 0 0 12px rgba(255, 0, 0, 0.4);
+}
+
 .timeline-dot {
     position: relative;
 }
